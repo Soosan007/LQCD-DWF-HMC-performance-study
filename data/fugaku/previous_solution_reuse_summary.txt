@@ -1,0 +1,26 @@
+Inner single-precision CG previous-solution reuse: 10-run aggregation
+Date aggregated: 2026-08-24
+
+Quality checks
+- Runs with EXIT CODE 0: 10/10
+- All runs passed profile structure checks: True
+- CG calls per run: 80
+- Calls using previous guess per run: 75
+- Fresh first calls per run: 5 (one for each solver object)
+- Converged CG calls per run: 80/80
+
+Across-run summary (mean +/- sample standard deviation)
+- Total inner-CG iterations per run: 6067.000 +/- 0.000
+- Total inner-CG time per run: 6.308708 +/- 0.029596 sec
+- HMC update time per run: 23.890000 +/- 0.116619 sec
+- Main time per run: 24.254000 +/- 0.115104 sec
+
+Interpretation note
+- This dataset contains only reuse_previous_solution=true runs.
+- A speedup or iteration-reduction claim requires a matching no-reuse dataset produced by the same corrected binary and hmc.log setup.
+- mean_iterations_reused and mean_iterations_fresh are not a controlled comparison because the fresh calls are the first call of five different solver objects.
+
+Files
+- run_summary.csv: one row per job/run
+- cg_calls_raw.csv: one row per inner-CG call (800 rows total)
+- overall_statistics.csv: across-run descriptive statistics

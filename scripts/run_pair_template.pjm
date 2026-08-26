@@ -1,0 +1,35 @@
+#!/bin/bash
+#PJM -L rscgrp=small
+#PJM -L node=1
+#PJM -L elapse=0:30:00
+#PJM -g __PROJECT_GROUP__
+#PJM --mpi proc=4
+#PJM -j
+#PJM -S
+#PJM --rsc-list "freq=2200,eco_state=2"
+set -eu
+
+. /usr/share/Modules/init/bash
+module purge
+module load lang/tcsds-1.2.43
+
+export OMP_NUM_THREADS=12
+export FLIB_BARRIER=HARD
+
+echo "purpose=fair paired measurement of CG axpy+norm2 and DdagD internals"
+echo "timing_scheme=single_outer_block"
+echo "pair=__PAIR__"
+echo "order=__FIRST__ then __SECOND__"
+echo "lattice_size=[8,8,8,8]"
+echo "grid_size=[1,1,2,2]"
+echo "MPI_processes=4"
+echo "OMP_threads_per_process=12"
+
+for variant in __FIRST__ __SECOND__; do
+  cd "__PAIR_DIR__/${variant}"
+  echo "PAIR_VARIANT_BEGIN pair=__PAIR__ variant=${variant}"
+  sha256sum hmc_dwf_eo.elf hmc_dwf_eo.cpp main.yaml HMC_DWF_Nf2p1_eo.yaml
+  llio_transfer ./hmc_dwf_eo.elf || true
+  /usr/bin/time -v mpiexec ./hmc_dwf_eo.elf
+  echo "PAIR_VARIANT_END pair=__PAIR__ variant=${variant}"
+done

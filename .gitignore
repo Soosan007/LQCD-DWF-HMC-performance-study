@@ -1,0 +1,37 @@
+# Raw and generated data
+raw_logs/
+output.*/
+*.out
+*.err
+*.stats
+*.log
+*.dat
+
+# Large archives and binaries
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.elf
+*.a
+*.o
+*.so
+*.dll
+*.exe
+
+# Gauge configurations and generated configurations
+conf_*.txt
+conf_output_*
+parameter_rational.*
+
+# Local paths and editor files
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
