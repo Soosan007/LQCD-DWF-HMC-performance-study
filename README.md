@@ -47,10 +47,20 @@
 │   └── lib_alt_QXS/{Field,Fopr}/
 ├── build/
 ├── scripts/
+├── presentation/
+│   ├── research_presentation_ja.pptx
+│   └── research_presentation_ja.pdf
 └── data/
     ├── fugaku/
-    └── genoa/
+    ├── genoa/
+    └── summary/              # 発表用の集計Excel（01～10）
 ```
+
+## 集計データと発表資料
+
+発表に使用する主要な集計結果は [`data/summary`](data/summary/) に保存しています。Genoa、富岳のACLE/General比較、MPI/OpenMP構成、DdagD・CG内部、関数融合、通信オーバーラップ、初期解、GPU、およびDWF Multigridの結果を、番号順のExcelファイルとして収録しています。
+
+発表スライドとPDF版は [`presentation`](presentation/) に保存しています。
 
 ## 変更の有効化
 
@@ -67,7 +77,7 @@
 
 ## データ方針
 
-GitHubには、変更ソース、実験条件、集約スクリプト、要約CSVのみを置きます。以下は含めません。
+GitHubには、変更ソース、実験条件、集約スクリプト、要約CSV・Excel、および発表資料を置きます。以下は含めません。
 
 - 入力配位ファイル
 - 生ログ一式
